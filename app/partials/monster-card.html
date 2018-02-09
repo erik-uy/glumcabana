@@ -32,7 +32,7 @@
     <div class="row immunities" ng-if="info.immunities">
       <div class="col-xs-3">Immunities:</div>
       <div class="col-xs-1" ng-repeat="attr in info.immunities">
-        <icon tmpl="attr" type="'status-effects'"></icon>
+        <nested-icons tmpl="attr"></nested-icons>
       </div>
       <br>
     </div>
@@ -44,7 +44,7 @@
               Special 1:
             <span ng-repeat="special in info.special1">
               <span class="label label-info" style="margin-right:2px;">
-                <icon tmpl="special"></icon>
+                <nested-icons tmpl="special"></nested-icons>
               </span>
             </span>
           </li>

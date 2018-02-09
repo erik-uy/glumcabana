@@ -23,7 +23,6 @@
   </div>
   <div class="panel-body" role="tabpanel" bs-collapse-target>
     <!-- Table -->
-    <br>
     <table class="table" style="margin-bottom:0px">
       <tr ng-repeat="instance in instances"
             ng-class="{'active':instance.state==0, 'default':instance.state==1, 'warning':instance.state==2}"
@@ -113,6 +112,14 @@
         </td>
       </tr>
     </table>
+    <br>
+    <div class="row" ng-if="isGroupSelected">
+      <div class="col-xs-12">
+        <button class="btn btn-danger btn-xs" ng-click="resetMonsterGroup()" style="width:100%">
+          <i class="glyphicon glyphicon-refresh"></i>Reset Monster Group
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 &nbsp;

@@ -15,7 +15,8 @@ angular.module('monsterManagerApp')
           monsterName: '=',
           scenarioLevel:'=',
           monsterInstances: '=?',
-          quickPreviewIndex:'=?'
+          quickPreviewIndex:'=?',
+          isGroupSelected:'=?'
       },
       link: function postLink(scope, element, attrs) {
         scope.monster=monster.details[scope.monsterName];
@@ -24,9 +25,15 @@ angular.module('monsterManagerApp')
           return scope.monsterLevelModifier + scope.scenarioLevel;
         };
 
-        var initInstances={};
-        for(var i=1; i<(scope.monster.boss?3:11); i++){
-          initInstances[i]={
+        
+        scope.resetMonsterGroup=function(){
+          scope.instances = scope.monsterInstances = {};
+          for(var i=1; i<(scope.monster.boss?3:11); i++){
+            scope.resetInstance(i);
+          };
+        };
+        scope.resetInstance=function(i){
+          scope.instances[i]={
             id:i,
             damageTaken:0,
             state:0,
@@ -38,10 +45,10 @@ angular.module('monsterManagerApp')
             poison:0,
             invisible:0,
             strengthen:0,
-            immobilize:0};
-        }
-
-        scope.instances = scope.monsterInstances = initInstances;
+            immobilize:0
+          };
+        };
+        scope.resetMonsterGroup();
 
         scope.isDesktop = function(){
           return $window.innerWidth>700;
