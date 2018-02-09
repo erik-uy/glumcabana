@@ -9,7 +9,7 @@
 angular.module('monsterManagerApp')
   .directive('monsterCard', function () {
     return {
-      templateUrl: '/views/monster-card.html',
+      templateUrl: '/partials/monster-card.html',
       restrict: 'E',
       scope: {
         info: '=',

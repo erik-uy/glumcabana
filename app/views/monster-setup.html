@@ -9,9 +9,24 @@
 <div class="row marketing">
   <form class="form-horizontal">
     <h4>Player Levels</h4>
-    <div class="input-group" ng-repeat="n in getTimes(5) track by $index">
-      <span class="input-group-addon">Player {{$index+1}}</span>
-      <input type="number" class="form-control" aria-label="0-9" ng-model="currentScenario.players[$index]">
+
+    
+
+    <div class="row" style="text-align:center; margin-bottom:20px" ng-repeat="n in getTimes(5) track by $index">
+      <span class="">
+          Player {{$index+1}}
+        <div class="btn-group monster-index">
+    
+          <label class="btn btn-default btn-sm"
+                ng-model="$parent.$parent.currentScenario.players[$parent.$index]"
+                uib-btn-radio="$index"
+                ng-repeat="n in getTimes(10) track by $index"
+            >
+            {{ $index }}
+            </label>
+        </div>
+      </span>
+      <br>
     </div>
   </form>
 </div>

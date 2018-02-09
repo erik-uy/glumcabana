@@ -8,6 +8,9 @@
 body {
   padding: 0;
 }
+tags-input .tags{
+  border-radius:5px;
+}
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
