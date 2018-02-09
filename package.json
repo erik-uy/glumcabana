@@ -24,8 +24,7 @@
     "grunt-postcss": "^0.5.5",
     "grunt-svgmin": "^2.0.0",
     "grunt-usemin": "^3.0.0",
-    "grunt-wiredep": "^2.0.0",
-    "jshint-stylish": "^1.0.0"
+    "grunt-wiredep": "^2.0.0"
   },
   "engines": {
     "node": ">=9.4.0"
@@ -39,6 +38,7 @@
     "generator-angular": "^0.16.0",
     "bower": "^1.8.2",
     "jit-grunt": "^0.9.1",
-    "time-grunt": "^1.0.0"
+    "time-grunt": "^1.0.0",
+    "jshint-stylish": "^1.0.2"
   }
 }
