@@ -34,7 +34,7 @@
   "scripts": {
     "test": "karma start test\\karma.conf.js",
     "postinstall": "bower install && grunt build",
-    "start":"grunt serve"
+    "start": "grunt serve"
   },
   "dependencies": {
     "generator-angular": "^0.16.0",
