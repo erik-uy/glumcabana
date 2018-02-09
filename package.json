@@ -30,14 +30,14 @@
     "node": ">=9.4.0"
   },
   "scripts": {
-    "test": "karma start test\\karma.conf.js",
-    "postinstall": "bower install"
+    "test": "karma start test\\karma.conf.js"
   },
   "dependencies": {
-    "generator-angular": "^0.16.0",
     "bower": "^1.8.2",
+    "generator-angular": "^0.16.0",
+    "grunt-cli": "^1.2.0",
     "jit-grunt": "^0.9.1",
-    "time-grunt": "^1.0.0",
-    "jshint-stylish": "^1.0.2"
+    "jshint-stylish": "^1.0.2",
+    "time-grunt": "^1.0.0"
   }
 }
