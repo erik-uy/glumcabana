@@ -24,13 +24,15 @@ angular.module('monsterManagerApp')
           return scope.monsterLevelModifier + scope.scenarioLevel;
         };
 
-        var initInstances={}
+        var initInstances={};
         for(var i=1; i<(scope.monster.boss?3:11); i++){
           initInstances[i]={
             id:i,
+            damageTaken:0,
+            state:0,
             spawnType:0,
             muddle:0,
-            stunn:0,
+            stun:0,
             wound:0,
             disarm:0,
             poison:0,
@@ -39,7 +41,7 @@ angular.module('monsterManagerApp')
             immobilize:0};
         }
 
-        scope.instances = scope.monsterInstances = scope.monsterInstances||initInstances;
+        scope.instances = scope.monsterInstances = initInstances;
 
         scope.isDesktop = function(){
           return $window.innerWidth>700;
@@ -64,7 +66,7 @@ angular.module('monsterManagerApp')
         };
 
         scope.cycleState=function(instance){
-          instance.state = instance.state==null? 0 : ++instance.state % (scope.monster.boss?2:3);
+          instance.state = (instance.state==null) ? 0 : (instance.state +1) % (scope.monster.boss?2 : 3 );
           // if (instance.state===0){
           //   instance.damageTaken=0;
           //   instance.muddle=0;

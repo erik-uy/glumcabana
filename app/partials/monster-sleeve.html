@@ -26,7 +26,6 @@
     <br>
     <table class="table" style="margin-bottom:0px">
       <tr ng-repeat="instance in instances"
-            ng-init="instance.state=1; instance.activate=false; instance.damageTaken=0"
             ng-class="{'active':instance.state==0, 'default':instance.state==1, 'warning':instance.state==2}"
             ng-if="quickPreviewIndex==='all' || quickPreviewIndex==instance.id"
 
@@ -37,7 +36,7 @@
         </td> -->
         <td class="col-xs-6 status-column" colspan="6">
           <div style="margin-top:-5px">
-              <button class="btn btn-default" style="width:100%" ng-click="cycleSpawnType(instance)" ng-disabled="instance.state==0">{{getSpawnType(instance.spawnType)}}</button>
+              <button class="btn btn-default" style="width:100%" ng-click="cycleSpawnType($parent.instance)" ng-disabled="$parent.instance.state==0">{{getSpawnType($parent.instance.spawnType)}}</button>
           </div>
           <button class="btn btn-default" ng-model="instance.stun" bs-checkbox ng-disabled="instance.state==0">
             <icon tmpl="'%stun%'" type="'status-effects'"></icon>
@@ -68,24 +67,24 @@
           <div>
             <div class="row">
               <span class="col-xs-12" style="text-align:center">
-                <button class="btn btn-default" style="width:100%" ng-click="cycleState(instance)">{{instance.id}} - {{getStateName(instance.state)}}</button>
-              </span>
+                  <button class="btn btn-default" style="width:100%" ng-click="cycleState($parent.instance)">{{$parent.instance.id}} - {{getStateName($parent.instance.state)}}</button>
+                </span>
             </div>
             <br>
             <div class="row">
               <span class="col-xs-12" style="text-align:center">
 
                 <div class="panel panel-default">
-                  <div class="panel-heading spinner-plus" ng-click="incrementDamage(instance)" ng-class="{disabled:instance.state==0}">
+                  <div class="panel-heading spinner-plus" ng-click="incrementDamage($parent.instance)" ng-class="{disabled:instance.state==0}">
                     <h3 class="panel-title">
                       <i class="glyphicon glyphicon-plus"></i>
                     </h3>
                   </div>
                   <div class="panel-body spinner-body">
                     <icon tmpl="'%damage%'" type="'status-effects'"/>
-                    {{instance.damageTaken}}
+                    {{$parent.instance.damageTaken}}
                   </div>
-                  <div class="panel-footer  spinner-minus"  ng-click="decrementDamage(instance)" ng-class="{disabled:instance.state==0}">
+                  <div class="panel-footer  spinner-minus"  ng-click="decrementDamage($parent.instance)" ng-class="{disabled:instance.state==0}">
                     <i class="glyphicon glyphicon-minus"></i>
                   </div>
                 </div>
