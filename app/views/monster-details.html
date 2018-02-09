@@ -1,0 +1,40 @@
+
+<div class="row" ng-if="!monster.boss">
+  <span class="col-xs-6 normal-monster-left">
+    <monster-card info="monster.level[monsterLevel].normal"></monster-card>
+  </span>
+  <span class="col-xs-6 normal-monster-right">
+    <monster-card info="monster.level[monsterLevel].elite" elite="true"></monster-card>
+  </span>
+
+    <!-- <table class="table table-condensed">
+      <thead>
+        <tr style="text-align:center">
+          <td><icon tmpl="'%health%'"></icon></td>
+          <td><icon tmpl="'%move%'"></icon></td>
+          <td><icon tmpl="'%attack%'"></icon></td>
+          <td><icon tmpl="'%range%'"></icon></td>
+        </tr>
+      </thead>
+      <tbody style="text-align:center">
+        <tr class="warning" ng-init="m = monster.level[monsterLevel].elite">
+          <td>{{m.health}}</td>
+          <td>{{m.move}}</td>
+          <td>{{m.attack}}</td>
+          <td>{{m.range}}</td>
+        </tr>
+        <tr class="default" ng-init="m = monster.level[monsterLevel].normal">
+          <td>{{m.health}}</td>
+          <td>{{m.move}}</td>
+          <td>{{m.attack}}</td>
+          <td>{{m.range}}</td>
+        </tr>
+      </tbody>
+    </table> -->
+
+</div>
+<div class="row" ng-if="monster.boss">
+  <span class="col-xs-12">
+      <monster-card info="monster.level[monsterLevel]"></monster-card>
+  </span>
+</div>

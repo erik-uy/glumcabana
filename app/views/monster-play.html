@@ -1,0 +1,48 @@
+<div class="row" ng-init="">
+  <div class="col-xs-12" style="text-align:center">
+      <div class="">
+          <label class="btn btn-default"
+                        ng-class="{'btn-xs':!(!activeMonster||activeMonster==m.text)}"
+                        ng-model="$parent.activeMonster"
+                        uib-btn-radio="m.text"
+                        uib-uncheckable="true"
+                        ng-click="activeMonsterUpdated($index)"
+                        ng-repeat="m in currentScenario.selectedMonsters">
+              <img
+                  src="{{monster.details[normalizeMonsterName(m.text)].boss?'/images/card-backs/Boss Stat Card.png':('/images/monsters/Horz-'+normalizeMonsterName(m.text)+'.png')}}"
+                  class="monster-portraits"
+              >
+          </label>
+      </div>
+  </div>
+</div>
+
+<br>
+<div class="row" style="text-align:center; margin-bottom:20px" ng-if="currentScenario.monsters[activeMonster]">
+  <span class="">
+    <div class="btn-group monster-index">
+
+        <label class="btn btn-default btn-sm"
+            ng-model="$parent.quickPreviewIndex"
+            uib-btn-radio="'all'"
+        >All</label><label class="btn btn-default btn-sm"
+            ng-model="$parent.$parent.quickPreviewIndex"
+            uib-btn-radio="idx"
+            ng-repeat="(idx,values) in currentScenario.monsters[activeMonster]"
+        >
+        {{idx}}
+        </label>
+    </div>
+  </span>
+  <br>
+</div>
+<div class="panel-group" ng-model="activePanel" role="tablist" aria-multiselectable="true" bs-collapse>
+  <div class="row" ng-repeat="m in currentScenario.selectedMonsters" ng-show="!activeMonster || activeMonster==m.text">
+    <monster-sleeve
+          monster-name="normalizeMonsterName(m.text)"
+          monster-instances="currentScenario.monsters[m.text]"
+          scenario-level="currentScenario.level"
+          quick-preview-index="quickPreviewIndex"
+          ng-init="currentScenario.monsters={}"></monster-sleeve>
+  </div>
+</div>

@@ -1,0 +1,215 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 0;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 10px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+.row.vertical-divider {
+  overflow: hidden;
+}
+.row.vertical-divider > div[class^="col-"] {
+  text-align: center;
+  padding-bottom: 100px;
+  margin-bottom: -100px;
+  border-left: 3px solid #F2F7F9;
+  border-right: 3px solid #F2F7F9;
+}
+.row.vertical-divider div[class^="col-"]:first-child {
+  border-left: none;
+}
+.row.vertical-divider div[class^="col-"]:last-child {
+  border-right: none;
+}
+img.monster-portraits{
+  height:40px;
+}
+.monster-sleeve img.general-icons{
+  height:20px;
+}
+.monster-sleeve img.status-effects{
+  height:25px;
+}
+
+monster-card .immunities{
+  margin-top:10px;
+}
+
+monster-card .specials{
+  margin-top:10px;
+}
+
+monster-sleeve .level-selector{
+  margin-top:9px;
+}
+
+.sleeve-icon{
+  height:40px;
+}
+
+.elite-card{
+  background-color:#faebcc
+}
+.status-column{
+  text-align:center
+}
+.status-column button{
+  margin-top:5px;
+}
+
+.attributes{
+  margin-left:0px;
+  margin-right:0px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.status-column button.btn.btn-default.active{
+  background-color:indianred
+}
+
+.boss-icon{
+  padding:8px;
+}
+
+.spinner-plus:active,.spinner-minus:active{
+  background-color:white;
+}
+
+.spinner-plus,.spinner-minus,.spinner-body{
+  text-align: center
+}
+.spinner-body{
+  margin:0px;
+  padding:0px;
+}
+.spinner-body .status-effect{
+  height:40px;
+}
+
+.spinner-body .icon-label{
+  font-size: 28px;
+  vertical-align: middle;
+  margin-left:10px;
+}
+monster-sleeve td.info.col-xs-5.damage-column > div{
+
+  vertical-align: middle;
+}
+
+@media screen and (max-width:320px){
+  .normal-monster-left.col-xs-6{
+    padding-left:5px;
+    padding-right:2.5px;
+  }
+  .normal-monster-right.col-xs-6{
+    padding-right:5px;
+    padding-left:2.5px;
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+
+  .monster-sleeve img.status-effects{
+    height:40px;
+  }
+
+  .container {
+    max-width: 730px;
+  }
+
+  .spinner-body{
+    padding-top:15px;
+    padding-bottom:15px;
+  }
+
+  .sleeve-icon{
+    height:70px;
+  }
+
+  .monster-sleeve img.general-icons{
+    height:40px;
+  }
+
+  .label icon img.general-icons{
+    height:15px;
+  }
+
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+
+  .tags {
+    border-radius:4px;
+  }
+}

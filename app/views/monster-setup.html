@@ -1,0 +1,46 @@
+
+<div class="jumbotron">
+  <p class="lead">
+    <img src="images/gh-logo.jpg" style="width:100%">
+    <br> Setup your scenario
+  </p>
+</div>
+
+<div class="row marketing">
+  <form class="form-horizontal">
+    <h4>Player Levels</h4>
+    <div class="input-group" ng-repeat="n in getTimes(5) track by $index">
+      <span class="input-group-addon">Player {{$index+1}}</span>
+      <input type="number" class="form-control" aria-label="0-9" ng-model="currentScenario.players[$index]">
+    </div>
+  </form>
+</div>
+
+<div class="row marketing">
+  <label>Select Enemies</label>
+  <tags-input ng-model="currentScenario.selectedMonsters" ng-class="form-control">
+    <auto-complete source="monster.names | filter :$query"></auto-complete>
+  </tags-input>
+</div>
+
+<div class="row marketing">
+  <h2>Select Scenario Level</h2>
+  <div class="row">
+    <input class="btn btn-info btn-lg col-xs-12" type="button" ng-value="'Easy: '+(scenarioLevel()-1)" ng-click="setScenario(-1)">
+  </div>
+  <br>
+
+  <div class="row">
+    <input class="btn btn-primary btn-lg col-xs-12" type="button" ng-value="'Normal: '+(scenarioLevel())" ng-click="setScenario(0)">
+  </div>
+  <br>
+
+  <div class="row">
+    <input class="btn btn-warning btn-lg col-xs-12" type="button" ng-value="'Hard: '+(scenarioLevel()+1)" ng-click="setScenario(1)">
+  </div>
+  <br>
+
+  <div class="row">
+    <input class="btn btn-danger btn-lg col-xs-12" type="button" ng-value="'Very Hard: '+(scenarioLevel()+2)" ng-click="setScenario(2)">
+  </div>
+</div>

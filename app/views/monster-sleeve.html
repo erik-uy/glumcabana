@@ -1,0 +1,119 @@
+<div class="panel panel-default monster-sleeve" ng-class="{'panel-danger':monster.boss}">
+  <!-- Default panel contents -->
+  <div class="panel-heading" role="tab">
+    <div class="row">
+      <div class="col-xs-7 col-sm-10 col-md-10">
+        <a bs-collapse-toggle>
+          <img src="{{'/images/monsters/Horz-' +monsterName+'.png'}}" class="sleeve-icon" ng-if="!monster.boss">
+          <img src="{{'/images/card-backs/Boss Stat Card.png'}}" class="sleeve-icon boss-icon" ng-if="monster.boss"> {{monsterName}}
+        </a>
+      </div>
+      <span class="col-xs-5 col-sm-2 col-md-2 level-selector">
+        <button class="btn btn-danger btn-xs" ng-click="decrementMonsterLevelModifier()">
+          <i class="glyphicon glyphicon-minus"></i>
+        </button> [{{getMonsterEffectiveLevel()}}]
+        <button class="btn btn-success btn-xs" ng-click="incrementMonsterLevelModifier()">
+          <i class="glyphicon glyphicon-plus"></i>
+        </button>
+      </span>
+    </div>
+    <div class="row">
+      <monster-details monster-name="monsterName" monster-level="getMonsterEffectiveLevel()" class="col-xs-12"></monster-details>
+    </div>
+  </div>
+  <div class="panel-body" role="tabpanel" bs-collapse-target>
+    <!-- Table -->
+    <br>
+    <table class="table" style="margin-bottom:0px">
+      <tr ng-repeat="instance in instances"
+            ng-init="instance.state=1; instance.activate=false; instance.damageTaken=0"
+            ng-class="{'active':instance.state==0, 'default':instance.state==1, 'warning':instance.state==2}"
+            ng-if="quickPreviewIndex==='all' || quickPreviewIndex==instance.id"
+
+
+            >
+        <!-- <td class="col-xs-1" style="vertical-align:middle;text-align:center;font-size:16px;" ng-if="isDesktop()">
+          <button class="btn btn-default">{{instance.id}}</button>
+        </td> -->
+        <td class="col-xs-6 status-column" colspan="6">
+          <div style="margin-top:-5px">
+              <button class="btn btn-default" style="width:100%" ng-click="cycleSpawnType(instance)" ng-disabled="instance.state==0">{{getSpawnType(instance.spawnType)}}</button>
+          </div>
+          <button class="btn btn-default" ng-model="instance.stun" bs-checkbox ng-disabled="instance.state==0">
+            <icon tmpl="'%stun%'" type="'status-effects'"></icon>
+          </button>
+          <button class="btn btn-default" ng-model="instance.wound" bs-checkbox ng-disabled="instance.state==0">
+            <icon tmpl="'%wound%'" type="'status-effects'"></icon>
+          </button>
+          <button class="btn btn-default" ng-model="instance.disarm" bs-checkbox ng-disabled="instance.state==0">
+            <icon tmpl="'%disarm%'" type="'status-effects'"></icon>
+          </button>
+          <button class="btn btn-default" ng-model="instance.invisible" bs-checkbox ng-disabled="instance.state==0">
+            <icon tmpl="'%invisible%'" type="'status-effects'"></icon>
+          </button>
+          <button class="btn btn-default" ng-model="instance.poison" bs-checkbox ng-disabled="instance.state==0">
+            <icon tmpl="'%poison%'" type="'status-effects'"></icon>
+          </button>
+          <button class="btn btn-default" ng-model="instance.muddle" bs-checkbox ng-disabled="instance.state==0">
+            <icon tmpl="'%muddle%'" type="'status-effects'"></icon>
+          </button>
+          <button class="btn btn-default" ng-model="instance.strengthen" bs-checkbox ng-disabled="instance.state==0">
+            <icon tmpl="'%strengthen%'" type="'status-effects'"></icon>
+          </button>
+          <button class="btn btn-default" ng-model="instance.immobilize" bs-checkbox ng-disabled="instance.state==0">
+            <icon tmpl="'%immobilize%'" type="'status-effects'"></icon>
+          </button>
+        </td>
+        <td class="col-xs-6 damage-column">
+          <div>
+            <div class="row">
+              <span class="col-xs-12" style="text-align:center">
+                <button class="btn btn-default" style="width:100%" ng-click="cycleState(instance)">{{instance.id}} - {{getStateName(instance.state)}}</button>
+              </span>
+            </div>
+            <br>
+            <div class="row">
+              <span class="col-xs-12" style="text-align:center">
+
+                <div class="panel panel-default">
+                  <div class="panel-heading spinner-plus" ng-click="incrementDamage(instance)" ng-class="{disabled:instance.state==0}">
+                    <h3 class="panel-title">
+                      <i class="glyphicon glyphicon-plus"></i>
+                    </h3>
+                  </div>
+                  <div class="panel-body spinner-body">
+                    <icon tmpl="'%damage%'" type="'status-effects'"/>
+                    {{instance.damageTaken}}
+                  </div>
+                  <div class="panel-footer  spinner-minus"  ng-click="decrementDamage(instance)" ng-class="{disabled:instance.state==0}">
+                    <i class="glyphicon glyphicon-minus"></i>
+                  </div>
+                </div>
+              </span>
+            </div>
+          </div>
+          <!-- <div ng-if="isDesktop()" class="row">
+            <span class="col-xs-6">
+              <div class="spinner-body">
+                <icon tmpl="'%damage% '+(instance.damageTaken||0)" type="'status-effects'">
+              </div>
+            </span>
+            <span class="col-xs-6">
+              <div class="panel panel-default">
+                <div class="panel-heading spinner-plus">
+                  <h3 class="panel-title">
+                    <i class="glyphicon glyphicon-plus"></i>
+                  </h3>
+                </div>
+                <div class="panel-footer  spinner-minus">
+                  <i class="glyphicon glyphicon-minus"></i>
+                </div>
+              </div>
+            </span>
+          </div> -->
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+&nbsp;

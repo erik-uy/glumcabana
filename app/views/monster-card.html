@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+  <div class="panel-body" ng-class="{'elite-card':elite}">
+    <div class="row stats">
+      <div class="col-xs-2">
+        <img class="general-icons" src="/images/general-icons/health.png">
+      </div>
+      <div class="col-xs-3">{{info.health}}</div>
+      <div class="col-xs-2">
+        <img class="general-icons" src="/images/general-icons/move.png">
+      </div>
+      <div class="col-xs-3">{{info.move}}</div>
+    </div>
+
+    <div class="row stats">
+      <div class="col-xs-2">
+        <img class="general-icons" src="/images/general-icons/attack.png">
+      </div>
+      <div class="col-xs-3">{{info.attack}}</div>
+      <div class="col-xs-2">
+        <img class="general-icons" src="/images/general-icons/range.png">
+      </div>
+      <div class="col-xs-3">{{info.range}}</div>
+    </div>
+    <div class="row attributes" ng-if="info.attributes.length>0">
+      <div class="col-xs-12">
+    <div class="row vertical-divider attribute" ng-repeat="attr in info.attributes">
+      <div class="col-xs-12">
+          <nested-icons tmpl="attr"></nested-icons>
+      </div>
+    </div></div>
+  </div>
+    <div class="row immunities" ng-if="info.immunities">
+      <div class="col-xs-3">Immunities:</div>
+      <div class="col-xs-1" ng-repeat="attr in info.immunities">
+        <icon tmpl="attr" type="'status-effects'"></icon>
+      </div>
+      <br>
+    </div>
+
+    <div class="row specials" ng-if="info.special1 || info.special2">
+      <div class="col-xs-12">
+        <ul class="list-group" style="margin-bottom:0px">
+          <li class="list-group-item" ng-if="info.special1">
+              Special 1:
+            <span ng-repeat="special in info.special1">
+              <span class="label label-info" style="margin-right:2px;">
+                <icon tmpl="special"></icon>
+              </span>
+            </span>
+          </li>
+          <li class="list-group-item" ng-if="info.special2">
+              Special 2:
+            <span ng-repeat="special in info.special2">
+              <span class="label label-info" style="margin-right:2px;">
+                <icon tmpl="special"></icon>
+              </span>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
