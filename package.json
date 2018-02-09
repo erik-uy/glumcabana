@@ -33,11 +33,11 @@
     "node": ">=9.4.0"
   },
   "scripts": {
-    "test": "karma start test\\karma.conf.js"
+    "test": "karma start test\\karma.conf.js",
+    "install":"npm install",
+    "start":"grunt serve"
   },
   "dependencies": {
     "generator-angular": "^0.16.0"
-  },
-  "install":"npm install",
-  "start":"grunt serve"
+  }
 }
