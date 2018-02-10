@@ -127,12 +127,17 @@ angular.module('monsterManagerApp')
         }
 
         scope.shouldInstanceBeVisible=function(instance){
-          return scope.viewMode ||
+          var r=( scope.viewMode && (
+                scope.quickPreviewIndex==instance.id ||
+                scope.quickPreviewIndex==='all'
+            ))||
             (!scope.viewMode && (
-              scope.quickPreviewIndex==instance.id||
-              (scope.quickPreviewIndex==='all'&&instance.state>0)||
-              scope.isMonsterGroupDead()
+              scope.quickPreviewIndex==instance.id ||
+              (scope.quickPreviewIndex==='all' && instance.state>0)||
+              (scope.quickPreviewIndex==='all' && scope.isMonsterGroupDead())
             ))
+          ;
+          return r;
         }
       }
     };
