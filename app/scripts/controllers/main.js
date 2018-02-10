@@ -44,4 +44,10 @@ angular.module('monsterManagerApp')
       $scope.quickPreviewIndex='all';
       $scope.activePanel=m;
     };
+
+    $scope.viewMode=1;
+    $scope.toggleViewMode=function(){
+      $scope.viewMode=!!!$scope.viewMode;
+    }
+
   });

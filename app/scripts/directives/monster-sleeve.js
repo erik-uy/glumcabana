@@ -7,7 +7,7 @@
  * # monsterSleeve
  */
 angular.module('monsterManagerApp')
-  .directive('monsterSleeve', function ($window, currentScenario, monster) {
+  .directive('monsterSleeve', function ($window, $filter, currentScenario, monster) {
     return {
       templateUrl: '/partials/monster-sleeve.html',
       restrict: 'E',
@@ -16,6 +16,7 @@ angular.module('monsterManagerApp')
           scenarioLevel:'=',
           monsterInstances: '=?',
           quickPreviewIndex:'=?',
+          viewMode:'=?',
           isGroupSelected:'=?'
       },
       link: function postLink(scope, element, attrs) {
@@ -104,7 +105,35 @@ angular.module('monsterManagerApp')
           return '<icon tmpl="\'%stun%\'" type="\'status-effects\'"></icon>';
         };
 
+        function notDeadAndFiltered(instance){
+          return scope.viewMode?true:instance.state>0;
+        }
 
+        scope.getInstances=function(){
+          var r=Object.values(  scope.instances );
+          return r;
+        }
+
+        scope.instanceSort=function(){
+          console.log(arguments)
+        }
+
+        scope.orderBySortLogic=function(){
+          return scope.viewMode?'id': ['-state','id'];
+        }
+
+        scope.isMonsterGroupDead = function(){
+          return Object.values(scope.instances).filter(function(i){return i.state>0;}).length<1;
+        }
+
+        scope.shouldInstanceBeVisible=function(instance){
+          return scope.viewMode ||
+            (!scope.viewMode && (
+              scope.quickPreviewIndex==instance.id||
+              (scope.quickPreviewIndex==='all'&&instance.state>0)||
+              scope.isMonsterGroupDead()
+            ))
+        }
       }
     };
   });

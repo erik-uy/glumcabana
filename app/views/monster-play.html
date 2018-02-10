@@ -25,7 +25,9 @@
         <label class="btn btn-default btn-sm"
             ng-model="$parent.quickPreviewIndex"
             uib-btn-radio="'all'"
-        >All</label><label class="btn btn-default btn-sm"
+            ng-click="toggleViewMode()"
+        ><i class="glyphicon" ng-class="{'glyphicon-th-list':viewMode, 'glyphicon-play':!viewMode}"></i>
+    </label><label class="btn btn-default btn-sm"
             ng-model="$parent.$parent.quickPreviewIndex"
             uib-btn-radio="idx"
             ng-repeat="(idx,values) in currentScenario.monsters[activeMonster]"
@@ -44,6 +46,7 @@
           scenario-level="currentScenario.level"
           quick-preview-index="quickPreviewIndex"
           is-group-selected="activeMonster==m.text"
+          view-mode="viewMode"
           ng-init="currentScenario.monsters={}"></monster-sleeve>
   </div>
 </div>

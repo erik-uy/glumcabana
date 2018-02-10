@@ -24,12 +24,9 @@
   <div class="panel-body" role="tabpanel" bs-collapse-target>
     <!-- Table -->
     <table class="table" style="margin-bottom:0px">
-      <tr ng-repeat="instance in instances"
+      <tr ng-repeat="instance in getInstances()|orderBy:orderBySortLogic()"
             ng-class="{'active':instance.state==0, 'default':instance.state==1, 'warning':instance.state==2}"
-            ng-if="quickPreviewIndex==='all' || quickPreviewIndex==instance.id"
-
-
-            >
+            ng-if="shouldInstanceBeVisible(instance)">
         <!-- <td class="col-xs-1" style="vertical-align:middle;text-align:center;font-size:16px;" ng-if="isDesktop()">
           <button class="btn btn-default">{{instance.id}}</button>
         </td> -->
@@ -116,7 +113,7 @@
     <div class="row" ng-if="isGroupSelected">
       <div class="col-xs-12">
         <button class="btn btn-danger btn-xs" ng-click="resetMonsterGroup()" style="width:100%">
-          <i class="glyphicon glyphicon-refresh"></i>Reset Monster Group
+          <i class="glyphicon glyphicon-refresh"></i> Reset Monster Group
         </button>
       </div>
     </div>
